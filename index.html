@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OmniHub - Ultimate Utility & Arcade Dashboard</title>
+    <title>Tengo Utilities - All-in-One Dashboard & Arcade</title>
     <style>
         :root {
             --bg-color: #0b0f19;
@@ -173,7 +173,7 @@
     <sidebar>
         <div class="logo-area">
             <span>⚡</span>
-            <span>OmniHub</span>
+            <span>Tengo Utilities</span>
         </div>
         <div class="nav-menu">
             <button class="nav-btn active" onclick="switchTab('dashboard', this)"><span>🏠 Dashboard Overview</span></button>
@@ -191,7 +191,7 @@
         <!-- TAB 1: DASHBOARD -->
         <div id="dashboard" class="tab-content active">
             <div class="card">
-                <h2>Welcome to Your OmniHub! 🚀</h2>
+                <h2>Welcome to Tengo Utilities! 🚀</h2>
                 <p style="color: var(--text-muted); line-height: 1.6;">Your personal all-in-one web dashboard hosted on GitHub Pages. Use the sidebar to navigate between your math calculators, built-in study helper, mini-games, shortcuts, and productivity tools.</p>
             </div>
             <div class="grid-3">
@@ -394,7 +394,6 @@
             catch (e) { calcDisplay.value = 'Error'; currentInput = '0'; }
         }
 
-        // Built-in Smart Study Helper (No API key needed!)
         function sendAIMessage() {
             const input = document.getElementById('chat-input');
             const messagesContainer = document.getElementById('chat-messages');
@@ -409,9 +408,9 @@
             messagesContainer.innerHTML += `<div class="message ai" id="${loadingId}">Thinking...</div>`;
 
             setTimeout(() => {
-                let reply = "That's a great question! Since you're building this cool offline site, you can use your calculator for math, your notepad for notes, or search your favorite shortcuts for answers!";
+                let reply = "That's a great question! Check your calculator for math or your notepad for notes.";
                 const lower = text.toLowerCase();
-                if (lower.includes('hello') || lower.includes('hi')) reply = "Hey there! Ready to conquer your homework or play some games?";
+                if (lower.includes('hello') || lower.includes('hi')) reply = "Hey there! Welcome to Tengo Utilities. Ready to tackle your day or play some games?";
                 else if (lower.includes('math')) reply = "Need math help? Head over to the Math Calculator tab on the left!";
                 
                 document.getElementById(loadingId).innerText = reply;
