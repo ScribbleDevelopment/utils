@@ -6,9 +6,8 @@
     <title>Tengo Utilities - Ultimate Pro Edition</title>
     <style>
         :root {
-            --bg-image: url('images/castle_town.jpg');
-            --sidebar-bg: rgba(15, 23, 42, 0.92);
-            --card-bg: rgba(15, 23, 42, 0.75);
+            --sidebar-bg: rgba(15, 23, 42, 0.95);
+            --card-bg: rgba(30, 41, 59, 0.7);
             --card-border: rgba(56, 189, 248, 0.3);
             --accent-gradient: linear-gradient(135deg, #38bdf8 0%, #818cf8 50%, #c084fc 100%);
             --accent: #38bdf8;
@@ -26,7 +25,8 @@
         }
 
         body {
-            background-image: var(--bg-image);
+            /* Default Background Image from repository */
+            background-image: url('images/castle_town.jpg');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -35,7 +35,7 @@
             min-height: 100vh;
             display: flex;
             overflow-x: hidden;
-            transition: background-image 0.5s ease;
+            transition: background-image 0.4s ease, background 0.4s ease;
         }
 
         /* Sidebar Navigation */
@@ -173,6 +173,8 @@
             flex: 1;
             padding: 2.5rem;
             max-width: calc(100vw - 290px);
+            z-index: 10;
+            position: relative;
         }
 
         .tab-content {
@@ -209,14 +211,14 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: rgba(11, 15, 25, 0.65);
+            background: rgba(11, 15, 25, 0.8);
+            backdrop-filter: blur(12px);
             border: 1px solid var(--card-border);
             padding: 0.75rem 1.25rem;
             border-radius: 1rem;
             margin-bottom: 0.5rem;
             font-size: 0.85rem;
             color: var(--text-muted);
-            backdrop-filter: blur(10px);
         }
 
         /* Calculator */
@@ -227,40 +229,40 @@
         }
         .calc-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.6rem; }
         .calc-btn {
-            background: rgba(51, 65, 85, 0.5); color: var(--text-main); border: 1px solid rgba(255,255,255,0.05); padding: 1rem; font-size: 1.15rem;
+            background: rgba(51, 65, 85, 0.6); color: var(--text-main); border: 1px solid rgba(255,255,255,0.05); padding: 1rem; font-size: 1.15rem;
             border-radius: 0.75rem; cursor: pointer; transition: all 0.15s ease; font-weight: 600;
         }
         .calc-btn:active { transform: scale(0.93); }
-        .calc-btn:hover { background: rgba(71, 85, 105, 0.8); border-color: var(--accent); }
-        .calc-btn.op { background: rgba(2, 132, 199, 0.35); color: #38bdf8; }
+        .calc-btn:hover { background: rgba(71, 85, 105, 0.9); border-color: var(--accent); }
+        .calc-btn.op { background: rgba(2, 132, 199, 0.45); color: #38bdf8; }
         .calc-btn.equals { background: var(--accent-gradient); color: #090d16; grid-column: span 2; font-weight: 900; }
 
         /* Arcade */
         .game-canvas { background: #020617; border: 1px solid var(--card-border); border-radius: 0.85rem; margin: 0.75rem auto; display: block; max-width: 100%; box-shadow: inset 0 0 15px rgba(0,0,0,0.8); }
-        .ctrl-btn { background: rgba(56, 189, 248, 0.2); border: 1px solid var(--accent); color: var(--text-main); padding: 0.65rem 1.25rem; border-radius: 0.65rem; font-weight: bold; cursor: pointer; transition: all 0.2s; }
+        .ctrl-btn { background: rgba(56, 189, 248, 0.25); border: 1px solid var(--accent); color: var(--text-main); padding: 0.65rem 1.25rem; border-radius: 0.65rem; font-weight: bold; cursor: pointer; transition: all 0.2s; }
         .ctrl-btn:hover { background: var(--accent); color: #090d16; box-shadow: 0 0 15px rgba(56, 189, 248, 0.4); }
 
         /* Quick Links */
         .link-card {
-            background: rgba(11, 15, 25, 0.6); border: 1px solid var(--card-border); border-radius: 1rem; padding: 1.25rem;
+            background: rgba(11, 15, 25, 0.75); backdrop-filter: blur(10px); border: 1px solid var(--card-border); border-radius: 1rem; padding: 1.25rem;
             text-align: center; text-decoration: none; color: var(--text-main); display: flex; flex-direction: column;
             align-items: center; gap: 0.4rem; transition: all 0.25s ease; position: relative;
         }
-        .link-card:hover { border-color: var(--accent); transform: translateY(-4px); box-shadow: 0 12px 30px rgba(56, 189, 248, 0.25); background: rgba(23, 37, 84, 0.4); }
+        .link-card:hover { border-color: var(--accent); transform: translateY(-4px); box-shadow: 0 12px 30px rgba(56, 189, 248, 0.25); background: rgba(23, 37, 84, 0.6); }
         .link-card span { font-weight: 700; font-size: 1rem; }
         .delete-link-btn { position: absolute; top: 6px; right: 8px; background: none; border: none; color: #ef4444; cursor: pointer; font-size: 0.85rem; padding: 4px; }
 
-        .add-link-form { display: grid; grid-template-columns: 1fr 1fr auto; gap: 0.75rem; background: rgba(11, 15, 25, 0.6); padding: 1.25rem; border-radius: 1rem; border: 1px solid var(--card-border); margin-top: 1rem; }
+        .add-link-form { display: grid; grid-template-columns: 1fr 1fr auto; gap: 0.75rem; background: rgba(11, 15, 25, 0.75); backdrop-filter: blur(10px); padding: 1.25rem; border-radius: 1rem; border: 1px solid var(--card-border); margin-top: 1rem; }
 
         input, textarea, select {
-            background: rgba(11, 15, 25, 0.75); border: 1px solid var(--card-border); padding: 0.8rem 1rem;
+            background: rgba(11, 15, 25, 0.85); border: 1px solid var(--card-border); padding: 0.8rem 1rem;
             border-radius: 0.75rem; color: var(--text-main); outline: none; font-size: 0.95rem; width: 100%;
         }
         input:focus, textarea:focus, select:focus { border-color: var(--accent); box-shadow: 0 0 12px rgba(56, 189, 248, 0.25); }
 
         .todo-input-group { display: flex; gap: 0.5rem; margin-bottom: 1rem; }
         .todo-list { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; max-height: 240px; overflow-y: auto; }
-        .todo-item { display: flex; justify-content: space-between; align-items: center; background: rgba(11, 15, 25, 0.6); padding: 0.65rem 1rem; border-radius: 0.6rem; border: 1px solid var(--card-border); font-size: 0.95rem; }
+        .todo-item { display: flex; justify-content: space-between; align-items: center; background: rgba(11, 15, 25, 0.75); padding: 0.65rem 1rem; border-radius: 0.6rem; border: 1px solid var(--card-border); font-size: 0.95rem; }
         .todo-item.completed span { text-decoration: line-through; color: var(--text-muted); }
         .todo-item button { background: #ef4444; border: none; color: white; padding: 0.2rem 0.5rem; border-radius: 0.3rem; cursor: pointer; }
         
@@ -286,19 +288,33 @@
             <span>Tengo Utilities Pro</span>
         </div>
         
-        <!-- Deltarune Image Wallpaper Selector -->
+        <!-- Theme & Image Wallpaper Customizer -->
         <div class="theme-selector-box">
-            <label style="font-size: 0.75rem; color: var(--text-muted); display: block; margin-bottom: 0.2rem;">🎮 Deltarune Image Wallpapers:</label>
+            <label style="font-size: 0.75rem; color: var(--text-muted); display: block; margin-bottom: 0.2rem;">🎨 Themes & Wallpapers:</label>
             <select id="theme-dropdown" onchange="applyUITheme(this.value)">
-                <option value="castle_town">1. Castle Town</option>
-                <option value="queens_mansion">2. Queen's Mansion</option>
-                <option value="dark_sanctuary">3. Dark Sanctuary</option>
-                <option value="flowery">4. Flowery</option>
-                <option value="cyber_city">5. Cyber City</option>
-                <option value="tv_world">6. TV World</option>
-                <option value="hometown_lightworld">7. Hometown (Light World)</option>
-                <option value="noelles_room">8. Noelle's Room</option>
-                <option value="card_kingdom">9. Card Kingdom</option>
+                <optgroup label="🎮 Deltarune Image Wallpapers">
+                    <option value="castle_town">Castle Town</option>
+                    <option value="queens_mansion">Queen's Mansion</option>
+                    <option value="dark_sanctuary">Dark Sanctuary</option>
+                    <option value="flowery">Flowery</option>
+                    <option value="cyber_city">Cyber City</option>
+                    <option value="tv_world">TV World</option>
+                    <option value="hometown_lightworld">Hometown (Light World)</option>
+                    <option value="noelles_room">Noelle's Room</option>
+                    <option value="card_kingdom">Card Kingdom</option>
+                </optgroup>
+                <optgroup label="✨ Custom UI Presets">
+                    <option value="cyberpunk">Cyberpunk Neon</option>
+                    <option value="matrix">Matrix Terminal</option>
+                    <option value="midnight">Midnight Obsidian</option>
+                    <option value="vaporwave">Sunset Vaporwave</option>
+                    <option value="solar">Solar Flare</option>
+                    <option value="ocean">Deep Ocean</option>
+                    <option value="bloodline">Cyber Bloodline Red</option>
+                    <option value="amethyst">Royal Amethyst</option>
+                    <option value="frost">Arctic Frost</option>
+                    <option value="gold">Cyber Gold</option>
+                </optgroup>
             </select>
         </div>
 
@@ -345,7 +361,7 @@
             <script>document.currentScript.outerHTML = renderUniversalHeader();</script>
             <div class="card">
                 <h2>Welcome to Tengo Utilities Pro! 🚀</h2>
-                <p style="color: var(--text-muted); line-height: 1.6;">10x more features with real Deltarune image wallpapers built by Scribble.Development.</p>
+                <p style="color: var(--text-muted); line-height: 1.6;">10x more features with embedded image wallpapers and classic UI presets built by Scribble.Development.</p>
             </div>
             <div class="grid-3">
                 <div class="card" style="text-align: center;">
@@ -565,9 +581,11 @@
             });
         }
 
-        // Live Image Wallpaper Switcher using actual repo files
+        // Theme and Image Wallpaper Switcher Engine
         function applyUITheme(themeKey) {
-            const root = document.documentElement;
+            const body = document.body;
+            
+            // Deltarune image files mapping
             const wallpapers = {
                 castle_town: "url('images/castle_town.jpg')",
                 queens_mansion: "url('images/queens_mansion.jpg')",
@@ -580,8 +598,29 @@
                 card_kingdom: "url('images/card_kingdom.jpg')"
             };
 
-            if(wallpapers[themeKey]) {
-                root.style.setProperty('--bg-image', wallpapers[themeKey]);
+            // Custom UI color preset gradients
+            const gradients = {
+                cyberpunk: "radial-gradient(circle at top left, #1e1b4b 0%, #090d16 50%, #020617 100%)",
+                matrix: "radial-gradient(circle at top left, #022c22 0%, #020f0c 50%, #000000 100%)",
+                midnight: "radial-gradient(circle at top left, #18181b 0%, #09090b 50%, #000000 100%)",
+                vaporwave: "radial-gradient(circle at top left, #4c1d95 0%, #2e1065 50%, #0f0728 100%)",
+                solar: "radial-gradient(circle at top left, #451a03 0%, #1c0f02 50%, #0a0501 100%)",
+                ocean: "radial-gradient(circle at top left, #082f49 0%, #031525 50%, #01080f 100%)",
+                bloodline: "radial-gradient(circle at top left, #450a0a 0%, #180505 50%, #080202 100%)",
+                amethyst: "radial-gradient(circle at top left, #3b0764 0%, #170327 50%, #09010f 100%)",
+                frost: "radial-gradient(circle at top left, #0f172a 0%, #0b1120 50%, #020617 100%)",
+                gold: "radial-gradient(circle at top left, #292524 0%, #1c1917 50%, #0c0a09 100%)"
+            };
+
+            if (wallpapers[themeKey]) {
+                body.style.backgroundImage = wallpapers[themeKey];
+                body.style.backgroundSize = "cover";
+                body.style.backgroundPosition = "center";
+                body.style.backgroundAttachment = "fixed";
+            } else if (gradients[themeKey]) {
+                body.style.backgroundImage = gradients[themeKey];
+                body.style.backgroundSize = "cover";
+                body.style.backgroundAttachment = "fixed";
             }
         }
 
