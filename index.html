@@ -6,14 +6,14 @@
     <title>Tengo Utilities - Ultimate Pro Edition</title>
     <style>
         :root {
-            --sidebar-bg: rgba(15, 23, 42, 0.95);
-            --card-bg: rgba(30, 41, 59, 0.7);
-            --card-border: rgba(56, 189, 248, 0.3);
-            --accent-gradient: linear-gradient(135deg, #38bdf8 0%, #818cf8 50%, #c084fc 100%);
-            --accent: #38bdf8;
+            --sidebar-bg: rgba(2, 44, 34, 0.92);
+            --card-bg: rgba(6, 78, 59, 0.65);
+            --card-border: rgba(52, 211, 153, 0.4);
+            --accent-gradient: linear-gradient(135deg, #6ee7b7 0%, #34d399 50%, #059669 100%);
+            --accent: #34d399;
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
-            --glow: 0 0 30px rgba(56, 189, 248, 0.2);
+            --glow: 0 0 30px rgba(52, 211, 153, 0.2);
         }
 
         * {
@@ -25,7 +25,6 @@
         }
 
         body {
-            /* Default Background Image from repository */
             background-image: url('images/castle_town.jpg');
             background-size: cover;
             background-position: center;
@@ -35,7 +34,7 @@
             min-height: 100vh;
             display: flex;
             overflow-x: hidden;
-            transition: background-image 0.4s ease, background 0.4s ease;
+            transition: background-image 0.4s ease;
         }
 
         /* Sidebar Navigation */
@@ -116,7 +115,7 @@
         .nav-btn:hover, .nav-btn.active {
             background: var(--accent-gradient);
             color: #090d16;
-            box-shadow: 0 4px 20px rgba(56, 189, 248, 0.35);
+            box-shadow: 0 4px 20px rgba(52, 211, 153, 0.35);
             transform: translateY(-2px);
         }
 
@@ -151,20 +150,22 @@
         .dev-name { font-size: 0.75rem; font-weight: 700; color: var(--text-main); }
         .dev-sub { font-size: 0.65rem; color: var(--text-muted); }
 
-        /* Mobile Toggle */
+        /* Working Sidebar Toggle Button */
         .menu-toggle {
-            display: none;
+            display: block;
             position: fixed;
             top: 1rem;
             right: 1rem;
             background: var(--card-bg);
+            backdrop-filter: blur(12px);
             border: 1px solid var(--card-border);
             color: var(--text-main);
-            padding: 0.6rem 0.9rem;
-            border-radius: 0.5rem;
+            padding: 0.6rem 1rem;
+            border-radius: 0.6rem;
             z-index: 101;
             cursor: pointer;
-            backdrop-filter: blur(10px);
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
         }
 
         /* Main Content */
@@ -175,6 +176,12 @@
             max-width: calc(100vw - 290px);
             z-index: 10;
             position: relative;
+            transition: margin-left 0.3s cubic-bezier(0.4, 0, 0.2, 1), max-width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        main.sidebar-collapsed {
+            margin-left: 0;
+            max-width: 100vw;
         }
 
         .tab-content {
@@ -211,7 +218,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: rgba(11, 15, 25, 0.8);
+            background: var(--card-bg);
             backdrop-filter: blur(12px);
             border: 1px solid var(--card-border);
             padding: 0.75rem 1.25rem;
@@ -239,30 +246,30 @@
 
         /* Arcade */
         .game-canvas { background: #020617; border: 1px solid var(--card-border); border-radius: 0.85rem; margin: 0.75rem auto; display: block; max-width: 100%; box-shadow: inset 0 0 15px rgba(0,0,0,0.8); }
-        .ctrl-btn { background: rgba(56, 189, 248, 0.25); border: 1px solid var(--accent); color: var(--text-main); padding: 0.65rem 1.25rem; border-radius: 0.65rem; font-weight: bold; cursor: pointer; transition: all 0.2s; }
-        .ctrl-btn:hover { background: var(--accent); color: #090d16; box-shadow: 0 0 15px rgba(56, 189, 248, 0.4); }
+        .ctrl-btn { background: var(--card-bg); border: 1px solid var(--accent); color: var(--text-main); padding: 0.65rem 1.25rem; border-radius: 0.65rem; font-weight: bold; cursor: pointer; transition: all 0.2s; backdrop-filter: blur(10px); }
+        .ctrl-btn:hover { background: var(--accent); color: #090d16; box-shadow: 0 0 15px rgba(52, 211, 153, 0.4); }
 
         /* Quick Links */
         .link-card {
-            background: rgba(11, 15, 25, 0.75); backdrop-filter: blur(10px); border: 1px solid var(--card-border); border-radius: 1rem; padding: 1.25rem;
+            background: var(--card-bg); backdrop-filter: blur(10px); border: 1px solid var(--card-border); border-radius: 1rem; padding: 1.25rem;
             text-align: center; text-decoration: none; color: var(--text-main); display: flex; flex-direction: column;
             align-items: center; gap: 0.4rem; transition: all 0.25s ease; position: relative;
         }
-        .link-card:hover { border-color: var(--accent); transform: translateY(-4px); box-shadow: 0 12px 30px rgba(56, 189, 248, 0.25); background: rgba(23, 37, 84, 0.6); }
+        .link-card:hover { border-color: var(--accent); transform: translateY(-4px); box-shadow: 0 12px 30px rgba(52, 211, 153, 0.25); background: rgba(23, 37, 84, 0.6); }
         .link-card span { font-weight: 700; font-size: 1rem; }
         .delete-link-btn { position: absolute; top: 6px; right: 8px; background: none; border: none; color: #ef4444; cursor: pointer; font-size: 0.85rem; padding: 4px; }
 
-        .add-link-form { display: grid; grid-template-columns: 1fr 1fr auto; gap: 0.75rem; background: rgba(11, 15, 25, 0.75); backdrop-filter: blur(10px); padding: 1.25rem; border-radius: 1rem; border: 1px solid var(--card-border); margin-top: 1rem; }
+        .add-link-form { display: grid; grid-template-columns: 1fr 1fr auto; gap: 0.75rem; background: var(--card-bg); backdrop-filter: blur(10px); padding: 1.25rem; border-radius: 1rem; border: 1px solid var(--card-border); margin-top: 1rem; }
 
         input, textarea, select {
-            background: rgba(11, 15, 25, 0.85); border: 1px solid var(--card-border); padding: 0.8rem 1rem;
+            background: rgba(5, 8, 15, 0.85); border: 1px solid var(--card-border); padding: 0.8rem 1rem;
             border-radius: 0.75rem; color: var(--text-main); outline: none; font-size: 0.95rem; width: 100%;
         }
-        input:focus, textarea:focus, select:focus { border-color: var(--accent); box-shadow: 0 0 12px rgba(56, 189, 248, 0.25); }
+        input:focus, textarea:focus, select:focus { border-color: var(--accent); box-shadow: 0 0 12px rgba(52, 211, 153, 0.25); }
 
         .todo-input-group { display: flex; gap: 0.5rem; margin-bottom: 1rem; }
         .todo-list { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; max-height: 240px; overflow-y: auto; }
-        .todo-item { display: flex; justify-content: space-between; align-items: center; background: rgba(11, 15, 25, 0.75); padding: 0.65rem 1rem; border-radius: 0.6rem; border: 1px solid var(--card-border); font-size: 0.95rem; }
+        .todo-item { display: flex; justify-content: space-between; align-items: center; background: var(--card-bg); padding: 0.65rem 1rem; border-radius: 0.6rem; border: 1px solid var(--card-border); font-size: 0.95rem; }
         .todo-item.completed span { text-decoration: line-through; color: var(--text-muted); }
         .todo-item button { background: #ef4444; border: none; color: white; padding: 0.2rem 0.5rem; border-radius: 0.3rem; cursor: pointer; }
         
@@ -271,14 +278,14 @@
         @media(max-width: 900px) {
             sidebar { transform: translateX(-100%); }
             sidebar.open { transform: translateX(0); }
-            main { margin-left: 0; max-width: 100vw; padding: 1.5rem; padding-top: 4.5rem; }
+            main { margin-left: 0 !important; max-width: 100vw !important; padding: 1.5rem; padding-top: 4.5rem; }
             .menu-toggle { display: block; }
-            .add-link-form { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
+    <!-- Sidebar Toggle Button -->
     <button class="menu-toggle" onclick="toggleSidebar()">☰ Menu</button>
 
     <!-- SIDEBAR NAVIGATION -->
@@ -345,7 +352,7 @@
     </sidebar>
 
     <!-- MAIN CONTENT -->
-    <main>
+    <main id="main-content">
         <script>
             function renderUniversalHeader() {
                 return `<div class="universal-header">
@@ -361,7 +368,7 @@
             <script>document.currentScript.outerHTML = renderUniversalHeader();</script>
             <div class="card">
                 <h2>Welcome to Tengo Utilities Pro! 🚀</h2>
-                <p style="color: var(--text-muted); line-height: 1.6;">10x more features with embedded image wallpapers and classic UI presets built by Scribble.Development.</p>
+                <p style="color: var(--text-muted); line-height: 1.6;">10x more features with embedded image wallpapers and dynamic UI theme matching built by Scribble.Development.</p>
             </div>
             <div class="grid-3">
                 <div class="card" style="text-align: center;">
@@ -480,7 +487,7 @@
                 <div class="card" style="text-align: center;">
                     <h3>🪙 Energy Clicker Game</h3>
                     <div id="clicker-score" style="font-size: 3.5rem; font-weight: 900; color: var(--accent); margin: 1.2rem 0;">0</div>
-                    <button onclick="incrementClicker()" style="background:var(--accent-gradient); border:none; border-radius:50%; width:110px; height:110px; font-size:3rem; cursor:pointer; box-shadow:0 0 25px rgba(56,189,248,0.5);">⚡</button>
+                    <button onclick="incrementClicker()" style="background:var(--accent-gradient); border:none; border-radius:50%; width:110px; height:110px; font-size:3rem; cursor:pointer; box-shadow:0 0 25px rgba(52,211,153,0.5);">⚡</button>
                 </div>
             </div>
         </div>
@@ -542,9 +549,9 @@
             <div class="card" style="text-align: center;">
                 <h2>🎨 Color Picker & Palette Generator</h2>
                 <p style="color: var(--text-muted); margin-bottom: 1rem;">Pick a color to copy Hex and RGB values instantly.</p>
-                <input type="color" id="color-picker-input" value="#38bdf8" oninput="updateColorValues(this.value)" style="width: 120px; height: 60px; border: none; cursor: pointer; background: none; margin-bottom: 1rem;">
-                <div style="font-size: 1.2rem; font-weight: bold; margin-bottom: 0.5rem;">Hex: <span id="hex-val" style="color: var(--accent);">#38bdf8</span></div>
-                <div style="font-size: 1.2rem; font-weight: bold;">RGB: <span id="rgb-val" style="color: var(--accent);">rgb(56, 189, 248)</span></div>
+                <input type="color" id="color-picker-input" value="#34d399" oninput="updateColorValues(this.value)" style="width: 120px; height: 60px; border: none; cursor: pointer; background: none; margin-bottom: 1rem;">
+                <div style="font-size: 1.2rem; font-weight: bold; margin-bottom: 0.5rem;">Hex: <span id="hex-val" style="color: var(--accent);">#34d399</span></div>
+                <div style="font-size: 1.2rem; font-weight: bold;">RGB: <span id="rgb-val" style="color: var(--accent);">rgb(52, 211, 153)</span></div>
             </div>
         </div>
 
@@ -564,7 +571,23 @@
     </main>
 
     <script>
-        function toggleSidebar() { document.getElementById('sidebar').classList.toggle('open'); }
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const mainContent = document.getElementById('main-content');
+            
+            if (window.innerWidth <= 900) {
+                sidebar.classList.toggle('open');
+            } else {
+                sidebar.classList.toggle('collapsed');
+                mainContent.classList.toggle('sidebar-collapsed');
+                // Adjust sidebar transform for desktop collapse
+                if(sidebar.classList.contains('collapsed')) {
+                    sidebar.style.transform = 'translateX(-100%)';
+                } else {
+                    sidebar.style.transform = 'translateX(0)';
+                }
+            }
+        }
 
         function switchTab(tabId, btnElement) {
             document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
@@ -581,46 +604,61 @@
             });
         }
 
-        // Theme and Image Wallpaper Switcher Engine
+        // Theme and Image Wallpaper Switcher Engine with UI Color Matching
         function applyUITheme(themeKey) {
             const body = document.body;
+            const root = document.documentElement;
             
-            // Deltarune image files mapping
+            // Deltarune image wallpaper configurations with matching color schemes
             const wallpapers = {
-                castle_town: "url('images/castle_town.jpg')",
-                queens_mansion: "url('images/queens_mansion.jpg')",
-                dark_sanctuary: "url('images/dark_sanctuary.jpg')",
-                flowery: "url('images/flowery.jpg')",
-                cyber_city: "url('images/cyber_city.jpg')",
-                tv_world: "url('images/tv_world.jpg')",
-                hometown_lightworld: "url('images/hometown_lightworld.jpg')",
-                noelles_room: "url('images/noelles_room.jpg')",
-                card_kingdom: "url('images/card_kingdom.jpg')"
+                castle_town: { img: "url('images/castle_town.jpg')", sidebar: "rgba(2, 44, 34, 0.92)", card: "rgba(6, 78, 59, 0.65)", border: "rgba(52, 211, 153, 0.4)", grad: "linear-gradient(135deg, #6ee7b7 0%, #34d399 50%, #059669 100%)", acc: "#34d399" },
+                queens_mansion: { img: "url('images/queens_mansion.jpg')", sidebar: "rgba(67, 20, 7, 0.92)", card: "rgba(124, 45, 18, 0.65)", border: "rgba(251, 191, 36, 0.4)", grad: "linear-gradient(135deg, #fde047 0%, #facc15 50%, #eab308 100%)", acc: "#fde047" },
+                dark_sanctuary: { img: "url('images/dark_sanctuary.jpg')", sidebar: "rgba(23, 5, 33, 0.92)", card: "rgba(49, 16, 66, 0.65)", border: "rgba(192, 132, 252, 0.4)", grad: "linear-gradient(135deg, #e879f9 0%, #c084fc 100%)", acc: "#e879f9" },
+                flowery: { img: "url('images/flowery.jpg')", sidebar: "rgba(59, 7, 100, 0.92)", card: "rgba(88, 28, 135, 0.65)", border: "rgba(216, 180, 254, 0.4)", grad: "linear-gradient(135deg, #e879f9 0%, #c084fc 50%, #a855f7 100%)", acc: "#e879f9" },
+                cyber_city: { img: "url('images/cyber_city.jpg')", sidebar: "rgba(80, 7, 36, 0.92)", card: "rgba(131, 24, 67, 0.65)", border: "rgba(244, 114, 182, 0.4)", grad: "linear-gradient(135deg, #f472b6 0%, #ec4899 50%, #be185d 100%)", acc: "#f472b6" },
+                tv_world: { img: "url('images/tv_world.jpg')", sidebar: "rgba(46, 2, 49, 0.92)", card: "rgba(74, 4, 78, 0.65)", border: "rgba(244, 63, 94, 0.4)", grad: "linear-gradient(135deg, #fb7185 0%, #f43f5e 100%)", acc: "#fb7185" },
+                hometown_lightworld: { img: "url('images/hometown_lightworld.jpg')", sidebar: "rgba(3, 105, 161, 0.92)", card: "rgba(2, 132, 199, 0.6)", border: "rgba(186, 230, 253, 0.4)", grad: "linear-gradient(135deg, #bae6fd 0%, #7dd3fc 100%)", acc: "#bae6fd" },
+                noelles_room: { img: "url('images/noelles_room.jpg')", sidebar: "rgba(23, 37, 84, 0.92)", card: "rgba(30, 58, 138, 0.65)", border: "rgba(147, 197, 253, 0.4)", grad: "linear-gradient(135deg, #60a5fa 0%, #93c5fd 50%, #eff6ff 100%)", acc: "#93c5fd" },
+                card_kingdom: { img: "url('images/card_kingdom.jpg')", sidebar: "rgba(15, 23, 42, 0.92)", card: "rgba(23, 37, 84, 0.65)", border: "rgba(96, 165, 250, 0.4)", grad: "linear-gradient(135deg, #93c5fd 0%, #60a5fa 50%, #3b82f6 100%)", acc: "#93c5fd" }
             };
 
-            // Custom UI color preset gradients
-            const gradients = {
-                cyberpunk: "radial-gradient(circle at top left, #1e1b4b 0%, #090d16 50%, #020617 100%)",
-                matrix: "radial-gradient(circle at top left, #022c22 0%, #020f0c 50%, #000000 100%)",
-                midnight: "radial-gradient(circle at top left, #18181b 0%, #09090b 50%, #000000 100%)",
-                vaporwave: "radial-gradient(circle at top left, #4c1d95 0%, #2e1065 50%, #0f0728 100%)",
-                solar: "radial-gradient(circle at top left, #451a03 0%, #1c0f02 50%, #0a0501 100%)",
-                ocean: "radial-gradient(circle at top left, #082f49 0%, #031525 50%, #01080f 100%)",
-                bloodline: "radial-gradient(circle at top left, #450a0a 0%, #180505 50%, #080202 100%)",
-                amethyst: "radial-gradient(circle at top left, #3b0764 0%, #170327 50%, #09010f 100%)",
-                frost: "radial-gradient(circle at top left, #0f172a 0%, #0b1120 50%, #020617 100%)",
-                gold: "radial-gradient(circle at top left, #292524 0%, #1c1917 50%, #0c0a09 100%)"
+            // Custom UI color preset configurations
+            const presets = {
+                cyberpunk: { grad: "radial-gradient(circle at top left, #1e1b4b 0%, #090d16 50%, #020617 100%)", sidebar: "rgba(15, 23, 42, 0.95)", card: "rgba(30, 41, 59, 0.7)", border: "rgba(56, 189, 248, 0.3)", accGrad: "linear-gradient(135deg, #38bdf8 0%, #818cf8 50%, #c084fc 100%)", acc: "#38bdf8" },
+                matrix: { grad: "radial-gradient(circle at top left, #022c22 0%, #020f0c 50%, #000000 100%)", sidebar: "rgba(2, 44, 34, 0.95)", card: "rgba(6, 78, 59, 0.7)", border: "rgba(52, 211, 153, 0.3)", accGrad: "linear-gradient(135deg, #6ee7b7 0%, #34d399 100%)", acc: "#34d399" },
+                midnight: { grad: "radial-gradient(circle at top left, #18181b 0%, #09090b 50%, #000000 100%)", sidebar: "rgba(9, 9, 11, 0.95)", card: "rgba(24, 24, 27, 0.7)", border: "rgba(113, 113, 122, 0.3)", accGrad: "linear-gradient(135deg, #f4f4f5 0%, #a1a1aa 100%)", acc: "#f4f4f5" },
+                vaporwave: { grad: "radial-gradient(circle at top left, #4c1d95 0%, #2e1065 50%, #0f0728 100%)", sidebar: "rgba(46, 16, 101, 0.95)", card: "rgba(76, 29, 149, 0.7)", border: "rgba(216, 180, 254, 0.3)", accGrad: "linear-gradient(135deg, #f472b6 0%, #c084fc 100%)", acc: "#f472b6" },
+                solar: { grad: "radial-gradient(circle at top left, #451a03 0%, #1c0f02 50%, #0a0501 100%)", sidebar: "rgba(28, 15, 2, 0.95)", card: "rgba(69, 26, 3, 0.7)", border: "rgba(251, 191, 36, 0.3)", accGrad: "linear-gradient(135deg, #fde047 0%, #f97316 100%)", acc: "#fde047" },
+                ocean: { grad: "radial-gradient(circle at top left, #082f49 0%, #031525 50%, #01080f 100%)", sidebar: "rgba(3, 21, 37, 0.95)", card: "rgba(8, 47, 73, 0.7)", border: "rgba(56, 189, 248, 0.3)", accGrad: "linear-gradient(135deg, #38bdf8 0%, #0284c7 100%)", acc: "#38bdf8" },
+                bloodline: { grad: "radial-gradient(circle at top left, #450a0a 0%, #180505 50%, #080202 100%)", sidebar: "rgba(24, 5, 5, 0.95)", card: "rgba(69, 10, 10, 0.7)", border: "rgba(248, 113, 113, 0.3)", accGrad: "linear-gradient(135deg, #f87171 0%, #dc2626 100%)", acc: "#f87171" },
+                amethyst: { grad: "radial-gradient(circle at top left, #3b0764 0%, #170327 50%, #09010f 100%)", sidebar: "rgba(23, 3, 39, 0.95)", card: "rgba(59, 7, 100, 0.7)", border: "rgba(216, 180, 254, 0.3)", accGrad: "linear-gradient(135deg, #e879f9 0%, #9333ea 100%)", acc: "#e879f9" },
+                frost: { grad: "radial-gradient(circle at top left, #0f172a 0%, #0b1120 50%, #020617 100%)", sidebar: "rgba(11, 17, 32, 0.95)", card: "rgba(15, 23, 42, 0.7)", border: "rgba(148, 163, 184, 0.3)", accGrad: "linear-gradient(135deg, #94a3b8 0%, #cbd5e1 100%)", acc: "#cbd5e1" },
+                gold: { grad: "radial-gradient(circle at top left, #292524 0%, #1c1917 50%, #0c0a09 100%)", sidebar: "rgba(28, 25, 23, 0.95)", card: "rgba(41, 37, 36, 0.7)", border: "rgba(214, 211, 209, 0.3)", accGrad: "linear-gradient(135deg, #fef08a 0%, #ca8a04 100%)", acc: "#fef08a" }
             };
 
             if (wallpapers[themeKey]) {
-                body.style.backgroundImage = wallpapers[themeKey];
+                const w = wallpapers[themeKey];
+                body.style.backgroundImage = w.img;
                 body.style.backgroundSize = "cover";
                 body.style.backgroundPosition = "center";
                 body.style.backgroundAttachment = "fixed";
-            } else if (gradients[themeKey]) {
-                body.style.backgroundImage = gradients[themeKey];
+                
+                root.style.setProperty('--sidebar-bg', w.sidebar);
+                root.style.setProperty('--card-bg', w.card);
+                root.style.setProperty('--card-border', w.border);
+                root.style.setProperty('--accent-gradient', w.grad);
+                root.style.setProperty('--accent', w.acc);
+            } else if (presets[themeKey]) {
+                const p = presets[themeKey];
+                body.style.backgroundImage = p.grad;
                 body.style.backgroundSize = "cover";
                 body.style.backgroundAttachment = "fixed";
+
+                root.style.setProperty('--sidebar-bg', p.sidebar);
+                root.style.setProperty('--card-bg', p.card);
+                root.style.setProperty('--card-border', p.border);
+                root.style.setProperty('--accent-gradient', p.accGrad);
+                root.style.setProperty('--accent', p.acc);
             }
         }
 
@@ -749,7 +787,7 @@
                 snake.unshift(head);
                 if (head.x === food.x && head.y === food.y) { food.x = Math.floor(Math.random()*21)*10; food.y = Math.floor(Math.random()*21)*10; } else { snake.pop(); }
                 ctx.fillStyle = '#020617'; ctx.fillRect(0, 0, 220, 220);
-                ctx.fillStyle = '#38bdf8'; snake.forEach(p => ctx.fillRect(p.x, p.y, 9, 9));
+                ctx.fillStyle = '#34d399'; snake.forEach(p => ctx.fillRect(p.x, p.y, 9, 9));
                 ctx.fillStyle = '#ef4444'; ctx.fillRect(food.x, food.y, 9, 9);
             }, 120);
         }
