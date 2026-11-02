@@ -6,15 +6,15 @@
     <title>Tengo Utilities - Ultimate Dashboard & Arcade</title>
     <style>
         :root {
-            --bg-gradient: linear-gradient(135deg, #090d16 0%, #111827 50%, #1e1b4b 100%);
-            --sidebar-bg: rgba(17, 24, 39, 0.85);
-            --card-bg: rgba(30, 41, 59, 0.7);
-            --card-border: rgba(56, 189, 248, 0.2);
-            --accent-gradient: linear-gradient(135deg, #38bdf8 0%, #818cf8 100%);
+            --bg-gradient: radial-gradient(circle at top left, #1e1b4b 0%, #090d16 50%, #020617 100%);
+            --sidebar-bg: rgba(15, 23, 42, 0.9);
+            --card-bg: rgba(30, 41, 59, 0.65);
+            --card-border: rgba(56, 189, 248, 0.25);
+            --accent-gradient: linear-gradient(135deg, #38bdf8 0%, #818cf8 50%, #c084fc 100%);
             --accent: #38bdf8;
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
-            --glow: 0 0 20px rgba(56, 189, 248, 0.15);
+            --glow: 0 0 25px rgba(56, 189, 248, 0.15);
         }
 
         * {
@@ -37,7 +37,7 @@
         sidebar {
             width: 280px;
             background: var(--sidebar-bg);
-            backdrop-filter: blur(16px);
+            backdrop-filter: blur(20px);
             border-right: 1px solid var(--card-border);
             display: flex;
             flex-direction: column;
@@ -46,12 +46,12 @@
             height: 100vh;
             overflow-y: auto;
             z-index: 100;
-            transition: transform 0.3s ease;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .logo-area {
-            font-size: 1.3rem;
-            font-weight: 800;
+            font-size: 1.4rem;
+            font-weight: 900;
             background: var(--accent-gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -65,7 +65,7 @@
         .nav-menu {
             display: flex;
             flex-direction: column;
-            gap: 0.5rem;
+            gap: 0.4rem;
         }
 
         .nav-btn {
@@ -78,7 +78,7 @@
             text-align: left;
             font-size: 0.95rem;
             font-weight: 600;
-            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.25s ease;
             display: flex;
             align-items: center;
             gap: 0.75rem;
@@ -87,11 +87,11 @@
         .nav-btn:hover, .nav-btn.active {
             background: var(--accent-gradient);
             color: #090d16;
-            box-shadow: 0 4px 20px rgba(56, 189, 248, 0.3);
-            transform: translateY(-1px);
+            box-shadow: 0 4px 20px rgba(56, 189, 248, 0.35);
+            transform: translateY(-2px);
         }
 
-        /* Mobile Hamburger Toggle */
+        /* Mobile Toggle */
         .menu-toggle {
             display: none;
             position: fixed;
@@ -100,14 +100,15 @@
             background: var(--card-bg);
             border: 1px solid var(--card-border);
             color: var(--text-main);
-            padding: 0.6rem 0.8rem;
+            padding: 0.6rem 0.9rem;
             border-radius: 0.5rem;
             z-index: 101;
             cursor: pointer;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
+            backdrop-filter: blur(10px);
         }
 
-        /* Main Content Area */
+        /* Main Content */
         main {
             margin-left: 280px;
             flex: 1;
@@ -117,7 +118,7 @@
 
         .tab-content {
             display: none;
-            animation: fadeIn 0.3s ease-in-out;
+            animation: fadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .tab-content.active {
@@ -126,74 +127,79 @@
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(8px); }
+            from { opacity: 0; transform: translateY(12px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
         .card {
             background: var(--card-bg);
-            backdrop-filter: blur(12px);
+            backdrop-filter: blur(16px);
             border: 1px solid var(--card-border);
             border-radius: 1.25rem;
             padding: 1.75rem;
             box-shadow: var(--glow);
-            transition: transform 0.2s;
+            transition: transform 0.2s ease, border-color 0.2s ease;
         }
 
-        h2 { margin-bottom: 1rem; font-size: 1.5rem; background: var(--accent-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        h3 { margin-bottom: 0.75rem; font-size: 1.15rem; color: var(--text-main); }
+        .card:hover {
+            border-color: rgba(56, 189, 248, 0.4);
+        }
 
-        .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
-        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; }
+        h2 { margin-bottom: 1rem; font-size: 1.6rem; background: var(--accent-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 800; }
+        h3 { margin-bottom: 0.75rem; font-size: 1.15rem; color: var(--text-main); font-weight: 700; }
 
-        /* Calculator Styles */
-        .calculator { max-width: 400px; margin: 0 auto; width: 100%; }
+        .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; }
+        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 1rem; }
+
+        /* Calculator */
+        .calculator { max-width: 420px; margin: 0 auto; width: 100%; }
         #calc-display {
-            width: 100%; height: 65px; background: rgba(9, 13, 22, 0.9); border: 1px solid var(--card-border);
-            border-radius: 0.75rem; color: var(--text-main); font-size: 2rem; text-align: right; padding: 0 1.25rem; margin-bottom: 1rem;
+            width: 100%; height: 70px; background: rgba(5, 8, 15, 0.9); border: 1px solid var(--card-border);
+            border-radius: 0.85rem; color: var(--text-main); font-size: 2.2rem; text-align: right; padding: 0 1.25rem; margin-bottom: 1rem;
         }
         .calc-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.6rem; }
         .calc-btn {
-            background: rgba(51, 65, 85, 0.6); color: var(--text-main); border: 1px solid rgba(255,255,255,0.05); padding: 1rem; font-size: 1.1rem;
-            border-radius: 0.75rem; cursor: pointer; transition: all 0.2s; font-weight: 600;
+            background: rgba(51, 65, 85, 0.5); color: var(--text-main); border: 1px solid rgba(255,255,255,0.05); padding: 1rem; font-size: 1.15rem;
+            border-radius: 0.75rem; cursor: pointer; transition: all 0.15s ease; font-weight: 600;
         }
-        .calc-btn:active { transform: scale(0.95); }
+        .calc-btn:active { transform: scale(0.93); }
         .calc-btn:hover { background: rgba(71, 85, 105, 0.8); border-color: var(--accent); }
-        .calc-btn.op { background: rgba(2, 132, 199, 0.4); color: #38bdf8; }
-        .calc-btn.equals { background: var(--accent-gradient); color: #090d16; grid-column: span 2; font-weight: 800; }
+        .calc-btn.op { background: rgba(2, 132, 199, 0.35); color: #38bdf8; }
+        .calc-btn.equals { background: var(--accent-gradient); color: #090d16; grid-column: span 2; font-weight: 900; }
 
-        /* Arcade & Games */
-        .game-canvas { background: #020617; border: 1px solid var(--card-border); border-radius: 0.75rem; margin: 0.75rem auto; display: block; max-width: 100%; }
-        .mobile-controls { display: flex; justify-content: center; gap: 0.5rem; margin-top: 0.5rem; flex-wrap: wrap; }
-        .ctrl-btn { background: rgba(56, 189, 248, 0.2); border: 1px solid var(--accent); color: var(--text-main); padding: 0.6rem 1.2rem; border-radius: 0.5rem; font-weight: bold; cursor: pointer; }
+        /* Arcade */
+        .game-canvas { background: #020617; border: 1px solid var(--card-border); border-radius: 0.85rem; margin: 0.75rem auto; display: block; max-width: 100%; box-shadow: inset 0 0 15px rgba(0,0,0,0.8); }
+        .ctrl-btn { background: rgba(56, 189, 248, 0.2); border: 1px solid var(--accent); color: var(--text-main); padding: 0.65rem 1.25rem; border-radius: 0.65rem; font-weight: bold; cursor: pointer; transition: all 0.2s; }
+        .ctrl-btn:hover { background: var(--accent); color: #090d16; box-shadow: 0 0 15px rgba(56, 189, 248, 0.4); }
 
         /* Quick Links */
         .link-card {
             background: rgba(11, 15, 25, 0.6); border: 1px solid var(--card-border); border-radius: 1rem; padding: 1.25rem;
             text-align: center; text-decoration: none; color: var(--text-main); display: flex; flex-direction: column;
-            align-items: center; gap: 0.4rem; transition: all 0.25s; position: relative;
+            align-items: center; gap: 0.4rem; transition: all 0.25s ease; position: relative;
         }
-        .link-card:hover { border-color: var(--accent); transform: translateY(-3px); box-shadow: 0 10px 25px rgba(56, 189, 248, 0.2); }
-        .link-card span { font-weight: 700; font-size: 0.95rem; }
-        .delete-link-btn { position: absolute; top: 6px; right: 8px; background: none; border: none; color: #ef4444; cursor: pointer; font-size: 0.85rem; padding: 4px; }
+        .link-card:hover { border-color: var(--accent); transform: translateY(-4px); box-shadow: 0 12px 30px rgba(56, 189, 248, 0.25); background: rgba(23, 37, 84, 0.4); }
+        .link-card span { font-weight: 700; font-size: 1rem; }
+        .delete-link-btn { position: absolute; top: 6px; right: 8px; background: none; border: none; color: #ef4444; cursor: pointer; font-size: 0.85rem; padding: 4px; opacity: 0.7; }
+        .delete-link-btn:hover { opacity: 1; }
 
         .add-link-form { display: grid; grid-template-columns: 1fr 1fr auto; gap: 0.75rem; background: rgba(11, 15, 25, 0.6); padding: 1.25rem; border-radius: 1rem; border: 1px solid var(--card-border); margin-top: 1rem; }
-        
-        /* Inputs & Forms */
-        input, textarea {
-            background: rgba(11, 15, 25, 0.8); border: 1px solid var(--card-border); padding: 0.75rem 1rem;
-            border-radius: 0.75rem; color: var(--text-main); outline: none; font-size: 0.95rem; width: 100%; transition: border-color 0.2s;
+
+        /* Inputs & Controls */
+        input, textarea, select {
+            background: rgba(11, 15, 25, 0.75); border: 1px solid var(--card-border); padding: 0.8rem 1rem;
+            border-radius: 0.75rem; color: var(--text-main); outline: none; font-size: 0.95rem; width: 100%; transition: all 0.2s ease;
         }
-        input:focus, textarea:focus { border-color: var(--accent); box-shadow: 0 0 10px rgba(56, 189, 248, 0.2); }
+        input:focus, textarea:focus, select:focus { border-color: var(--accent); box-shadow: 0 0 12px rgba(56, 189, 248, 0.25); }
 
         .todo-input-group { display: flex; gap: 0.5rem; margin-bottom: 1rem; }
-        .todo-list { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; max-height: 220px; overflow-y: auto; }
-        .todo-item { display: flex; justify-content: space-between; align-items: center; background: rgba(11, 15, 25, 0.6); padding: 0.6rem 1rem; border-radius: 0.5rem; border: 1px solid var(--card-border); font-size: 0.95rem; }
+        .todo-list { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; max-height: 240px; overflow-y: auto; }
+        .todo-item { display: flex; justify-content: space-between; align-items: center; background: rgba(11, 15, 25, 0.6); padding: 0.65rem 1rem; border-radius: 0.6rem; border: 1px solid var(--card-border); font-size: 0.95rem; }
         .todo-item.completed span { text-decoration: line-through; color: var(--text-muted); }
         .todo-item button { background: #ef4444; border: none; color: white; padding: 0.2rem 0.5rem; border-radius: 0.3rem; cursor: pointer; }
         
         textarea.note-area { height: 160px; resize: vertical; }
-        .timer-display { font-size: 2.5rem; text-align: center; font-weight: 800; margin: 0.75rem 0; background: var(--accent-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .timer-display { font-size: 3rem; text-align: center; font-weight: 900; margin: 0.75rem 0; background: var(--accent-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: 2px; }
 
         @media(max-width: 900px) {
             sidebar { transform: translateX(-100%); }
@@ -220,7 +226,7 @@
             <button class="nav-btn" onclick="switchTab('calculator', this)"><span>🧮 Math Calculator</span></button>
             <button class="nav-btn" onclick="switchTab('arcade', this)"><span>🎮 Mobile Arcade</span></button>
             <button class="nav-btn" onclick="switchTab('shortcuts', this)"><span>🔗 Quick Links Hub</span></button>
-            <button class="nav-btn" onclick="switchTab('utilities', this)"><span>🛠️ Mini Utilities</span></button>
+            <button class="nav-btn" onclick="switchTab('utilities', this)"><span>🛠️ 10x Utilities</span></button>
             <button class="nav-btn" onclick="switchTab('tools', this)"><span>📝 Productivity</span></button>
         </div>
     </sidebar>
@@ -231,22 +237,22 @@
         <div id="dashboard" class="tab-content active">
             <div class="card">
                 <h2>Welcome to Tengo Utilities! 🚀</h2>
-                <p style="color: var(--text-muted); line-height: 1.6;">Your high-speed, gorgeous mobile and tablet-ready dashboard. Fully packed with touch-friendly mini-games, tools, calculators, and quick shortcuts!</p>
+                <p style="color: var(--text-muted); line-height: 1.6;">Your 10x-upgraded, gorgeous mobile and tablet-ready dashboard. Fully packed with touch-friendly mini-games, advanced tools, converters, and quick shortcuts!</p>
             </div>
             <div class="grid-3">
                 <div class="card" style="text-align: center;">
                     <h3>⚡ Active Tasks</h3>
-                    <p id="dash-task-count" style="font-size: 2rem; color: var(--accent); font-weight: 800;">0</p>
+                    <p id="dash-task-count" style="font-size: 2.2rem; color: var(--accent); font-weight: 900;">0</p>
                     <small style="color: var(--text-muted);">To-Do items remaining</small>
                 </div>
                 <div class="card" style="text-align: center;">
                     <h3>🕒 Local Time</h3>
-                    <p id="dash-clock" style="font-size: 1.8rem; color: var(--accent); font-weight: 800;">00:00:00</p>
+                    <p id="dash-clock" style="font-size: 1.9rem; color: var(--accent); font-weight: 900;">00:00:00</p>
                     <small style="color: var(--text-muted);">System Time</small>
                 </div>
                 <div class="card" style="text-align: center;">
                     <h3>🎉 Weekend Countdown</h3>
-                    <p id="dash-weekend" style="font-size: 1.3rem; color: var(--accent); font-weight: 800;">Calculating...</p>
+                    <p id="dash-weekend" style="font-size: 1.3rem; color: var(--accent); font-weight: 900;">Calculating...</p>
                     <small style="color: var(--text-muted);">Time until Friday 5 PM</small>
                 </div>
             </div>
@@ -254,9 +260,9 @@
 
         <!-- TAB 2: STUDY HELPER -->
         <div id="ai-assistant" class="tab-content">
-            <div class="card" style="display: flex; flex-direction: column; height: 500px;">
+            <div class="card" style="display: flex; flex-direction: column; height: 520px;">
                 <h2>🤖 Smart Study Helper</h2>
-                <div id="chat-messages" style="flex:1; overflow-y:auto; background:rgba(9,13,22,0.6); border:1px solid var(--card-border); border-radius:0.75rem; padding:1rem; margin-bottom:1rem; display:flex; flex-direction:column; gap:0.75rem;">
+                <div id="chat-messages" style="flex:1; overflow-y:auto; background:rgba(5,8,15,0.7); border:1px solid var(--card-border); border-radius:0.85rem; padding:1rem; margin-bottom:1rem; display:flex; flex-direction:column; gap:0.75rem;">
                     <div style="background:rgba(51,65,85,0.6); padding:0.75rem 1rem; border-radius:0.75rem; max-width:85%;" class="message ai">Hey! I'm your study assistant. Ask me anything or type a topic you need help with!</div>
                 </div>
                 <div style="display:flex; gap:0.5rem;">
@@ -269,7 +275,7 @@
         <!-- TAB 3: CALCULATOR -->
         <div id="calculator" class="tab-content">
             <div class="card calculator">
-                <h2>🧮 Math Calculator</h2>
+                <h2>🧮 Advanced Math Calculator</h2>
                 <input type="text" id="calc-display" readonly value="0">
                 <div class="calc-grid">
                     <button class="calc-btn" onclick="clearCalc()">C</button>
@@ -300,7 +306,7 @@
             </div>
         </div>
 
-        <!-- TAB 4: ARCADE (MOBILE FRIENDLY) -->
+        <!-- TAB 4: ARCADE -->
         <div id="arcade" class="tab-content">
             <div class="grid-2">
                 <!-- Snake Game -->
@@ -308,10 +314,10 @@
                     <h3>🐍 Mobile Retro Snake</h3>
                     <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.5rem;">Use on-screen buttons or arrow keys</p>
                     <canvas id="snakeCanvas" class="game-canvas" width="220" height="220"></canvas>
-                    <div class="mobile-controls">
+                    <div style="display:flex; justify-content:center; margin-top:0.5rem;">
                         <button class="ctrl-btn" onclick="setSnakeDir('UP')">⬆️</button>
                     </div>
-                    <div class="mobile-controls">
+                    <div style="display:flex; justify-content:center; gap:0.5rem; margin-top:0.4rem;">
                         <button class="ctrl-btn" onclick="setSnakeDir('LEFT')">⬅️</button>
                         <button class="ctrl-btn" onclick="setSnakeDir('DOWN')">⬇️</button>
                         <button class="ctrl-btn" onclick="setSnakeDir('RIGHT')">➡️</button>
@@ -323,23 +329,23 @@
                 <div class="card" style="text-align: center;">
                     <h3>🪙 Energy Clicker Game</h3>
                     <p style="font-size: 0.8rem; color: var(--text-muted);">Tap the coin as fast as you can!</p>
-                    <div id="clicker-score" style="font-size: 3rem; font-weight: 800; color: var(--accent); margin: 1.5rem 0;">0</div>
-                    <button onclick="incrementClicker()" style="background:var(--accent-gradient); border:none; border-radius:50%; width:100px; height:100px; font-size:2.5rem; cursor:pointer; box-shadow:0 0 20px rgba(56,189,248,0.4); active:scale(0.9);">⚡</button>
+                    <div id="clicker-score" style="font-size: 3.5rem; font-weight: 900; color: var(--accent); margin: 1.2rem 0;">0</div>
+                    <button onclick="incrementClicker()" style="background:var(--accent-gradient); border:none; border-radius:50%; width:110px; height:110px; font-size:3rem; cursor:pointer; box-shadow:0 0 25px rgba(56,189,248,0.5); active:scale(0.9);">⚡</button>
                 </div>
 
                 <!-- Tic-Tac-Toe -->
                 <div class="card" style="text-align: center; grid-column: 1 / -1;">
                     <h3>❌ Tic-Tac-Toe (2-Player Touch)</h3>
-                    <div id="ttt-board" style="display: grid; grid-template-columns: repeat(3, 70px); gap: 8px; justify-content: center; margin: 15px 0;">
-                        <button class="calc-btn" onclick="makeMove(0)" id="cell-0" style="height:70px; font-size:1.8rem;"></button>
-                        <button class="calc-btn" onclick="makeMove(1)" id="cell-1" style="height:70px; font-size:1.8rem;"></button>
-                        <button class="calc-btn" onclick="makeMove(2)" id="cell-2" style="height:70px; font-size:1.8rem;"></button>
-                        <button class="calc-btn" onclick="makeMove(3)" id="cell-3" style="height:70px; font-size:1.8rem;"></button>
-                        <button class="calc-btn" onclick="makeMove(4)" id="cell-4" style="height:70px; font-size:1.8rem;"></button>
-                        <button class="calc-btn" onclick="makeMove(5)" id="cell-5" style="height:70px; font-size:1.8rem;"></button>
-                        <button class="calc-btn" onclick="makeMove(6)" id="cell-6" style="height:70px; font-size:1.8rem;"></button>
-                        <button class="calc-btn" onclick="makeMove(7)" id="cell-7" style="height:70px; font-size:1.8rem;"></button>
-                        <button class="calc-btn" onclick="makeMove(8)" id="cell-8" style="height:70px; font-size:1.8rem;"></button>
+                    <div id="ttt-board" style="display: grid; grid-template-columns: repeat(3, 75px); gap: 8px; justify-content: center; margin: 15px 0;">
+                        <button class="calc-btn" onclick="makeMove(0)" id="cell-0" style="height:75px; font-size:2rem;"></button>
+                        <button class="calc-btn" onclick="makeMove(1)" id="cell-1" style="height:75px; font-size:2rem;"></button>
+                        <button class="calc-btn" onclick="makeMove(2)" id="cell-2" style="height:75px; font-size:2rem;"></button>
+                        <button class="calc-btn" onclick="makeMove(3)" id="cell-3" style="height:75px; font-size:2rem;"></button>
+                        <button class="calc-btn" onclick="makeMove(4)" id="cell-4" style="height:75px; font-size:2rem;"></button>
+                        <button class="calc-btn" onclick="makeMove(5)" id="cell-5" style="height:75px; font-size:2rem;"></button>
+                        <button class="calc-btn" onclick="makeMove(6)" id="cell-6" style="height:75px; font-size:2rem;"></button>
+                        <button class="calc-btn" onclick="makeMove(7)" id="cell-7" style="height:75px; font-size:2rem;"></button>
+                        <button class="calc-btn" onclick="makeMove(8)" id="cell-8" style="height:75px; font-size:2rem;"></button>
                     </div>
                     <button class="ctrl-btn" onclick="resetTTT()">Reset Board</button>
                 </div>
@@ -349,7 +355,7 @@
         <!-- TAB 5: QUICK LINKS HUB -->
         <div id="shortcuts" class="tab-content">
             <div class="card">
-                <h2>🔗 Favorite Websites & Games</h2>
+                <h2>🔗 Favorite Websites & Games Hub</h2>
                 <div class="grid-3" id="links-grid" style="margin-bottom: 1.5rem;"></div>
                 <h3>Add Custom Shortcut</h3>
                 <div class="add-link-form">
@@ -360,7 +366,7 @@
             </div>
         </div>
 
-        <!-- TAB 6: MINI UTILITIES -->
+        <!-- TAB 6: 10X UTILITIES -->
         <div id="utilities" class="tab-content">
             <div class="grid-2">
                 <div class="card">
@@ -380,9 +386,20 @@
                     <p style="font-size: 1rem;">Total Tip: <span id="tip-result" style="color:var(--accent); font-weight:bold;">$0.00</span></p>
                 </div>
                 <div class="card">
-                    <h3>📏 Length Converter</h3>
+                    <h3>🏷️ Discount Price Calculator</h3>
+                    <input type="number" id="orig-price" placeholder="Original Price ($)" oninput="calcDiscount()" style="margin-bottom:0.75rem;">
+                    <input type="number" id="disc-pct" placeholder="Discount % (e.g., 20)" oninput="calcDiscount()" style="margin-bottom:0.75rem;">
+                    <p style="font-size: 1rem;">Final Price: <span id="disc-result" style="color:var(--accent); font-weight:bold;">$0.00</span></p>
+                </div>
+                <div class="card">
+                    <h3>📏 Length Converter (Inches to cm)</h3>
                     <input type="number" id="inch-input" placeholder="Inches" oninput="convertInches()" style="margin-bottom:0.75rem;">
                     <p style="font-size: 1rem;">Centimeters: <span id="cm-result" style="color:var(--accent); font-weight:bold;">0</span> cm</p>
+                </div>
+                <div class="card">
+                    <h3>🎂 Age Calculator (Years, Months, Days)</h3>
+                    <input type="date" id="birth-date" oninput="calcAge()" style="margin-bottom:0.75rem;">
+                    <p style="font-size: 1rem;" id="age-result">Select your birthdate above</p>
                 </div>
             </div>
         </div>
@@ -403,7 +420,12 @@
                     <textarea class="note-area" id="scratchpad" placeholder="Type notes here... (Saves automatically)" oninput="saveNotes()"></textarea>
                 </div>
                 <div class="card" style="text-align: center; grid-column: 1 / -1;">
-                    <h3>Study Focus Timer</h3>
+                    <h3>Study Focus Pomodoro Timer</h3>
+                    <div style="display:flex; justify-content:center; gap:0.5rem; margin-bottom:0.5rem;">
+                        <button class="ctrl-btn" onclick="setPomodoroMode(25)" id="mode-25" style="background:var(--accent); color:#090d16;">Work (25m)</button>
+                        <button class="ctrl-btn" onclick="setPomodoroMode(5)" id="mode-5">Short Break (5m)</button>
+                        <button class="ctrl-btn" onclick="setPomodoroMode(15)" id="mode-15">Long Break (15m)</button>
+                    </div>
                     <div class="timer-display" id="pomodoro-display">25:00</div>
                     <div style="display:flex; justify-content:center; gap:0.5rem; flex-wrap:wrap;">
                         <button class="ctrl-btn" onclick="startPomodoro()">Start</button>
@@ -416,7 +438,6 @@
     </main>
 
     <script>
-        // Sidebar Toggle for Mobile
         function toggleSidebar() {
             document.getElementById('sidebar').classList.toggle('open');
         }
@@ -486,7 +507,7 @@
         }
         function handleKeyPress(e) { if (e.key === 'Enter') sendAIMessage(); }
 
-        // Mobile Friendly Snake Game
+        // Snake Game
         let snakeInterval = null;
         let snakeDx = 10, snakeDy = 0;
         function setSnakeDir(dir) {
@@ -598,7 +619,7 @@
             nameInput.value = ''; urlInput.value = ''; renderLinks();
         }
 
-        // Utilities
+        // 10x Utilities
         function updateWordCount() {
             const text = document.getElementById('word-count-input').value;
             const words = text.trim() === '' ? 0 : text.trim().split(/\s+/).length;
@@ -608,7 +629,7 @@
         function generatePassword() {
             const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*";
             let pass = "";
-            for (let i = 0; i < 12; i++) pass += chars.charAt(Math.floor(Math.random() * chars.length));
+            for (let i = 0; i < 14; i++) pass += chars.charAt(Math.floor(Math.random() * chars.length));
             document.getElementById('gen-pass').value = pass;
         }
         function calcTip() {
@@ -616,9 +637,27 @@
             const pct = parseFloat(document.getElementById('tip-pct').value) || 0;
             document.getElementById('tip-result').innerText = '$' + ((bill * pct) / 100).toFixed(2);
         }
+        function calcDiscount() {
+            const price = parseFloat(document.getElementById('orig-price').value) || 0;
+            const pct = parseFloat(document.getElementById('disc-pct').value) || 0;
+            const final = price - (price * pct) / 100;
+            document.getElementById('disc-result').innerText = '$' + final.toFixed(2);
+        }
         function convertInches() {
             const inches = parseFloat(document.getElementById('inch-input').value) || 0;
             document.getElementById('cm-result').innerText = (inches * 2.54).toFixed(2);
+        }
+        function calcAge() {
+            const val = document.getElementById('birth-date').value;
+            if(!val) return;
+            const birth = new Date(val);
+            const now = new Date();
+            let years = now.getFullYear() - birth.getFullYear();
+            let months = now.getMonth() - birth.getMonth();
+            let days = now.getDate() - birth.getDate();
+            if (days < 0) { months--; days += 30; }
+            if (months < 0) { years--; months += 12; }
+            document.getElementById('age-result').innerText = `${years} years, ${months} months, ${days} days old`;
         }
 
         // To-Do
@@ -652,6 +691,15 @@
 
         // Pomodoro
         let pomodoroTime = 25 * 60; let pomodoroInterval = null;
+        function setPomodoroMode(mins) {
+            pausePomodoro();
+            pomodoroTime = mins * 60;
+            updatePomodoroDisplay();
+            document.querySelectorAll('[id^="mode-"]').forEach(b => b.style.background = 'rgba(56, 189, 248, 0.2)');
+            document.querySelectorAll('[id^="mode-"]').forEach(b => b.style.color = 'var(--text-main)');
+            document.getElementById('mode-' + mins).style.background = 'var(--accent)';
+            document.getElementById('mode-' + mins).style.color = '#090d16';
+        }
         function updatePomodoroDisplay() {
             const mins = Math.floor(pomodoroTime / 60); const secs = pomodoroTime % 60;
             document.getElementById('pomodoro-display').innerText = `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
@@ -660,7 +708,7 @@
             if (pomodoroInterval) return;
             pomodoroInterval = setInterval(() => {
                 if (pomodoroTime > 0) { pomodoroTime--; updatePomodoroDisplay(); }
-                else { clearInterval(pomodoroInterval); pomodoroInterval = null; alert("Pomodoro finished!"); }
+                else { clearInterval(pomodoroInterval); pomodoroInterval = null; alert("Pomodoro timer finished!"); }
             }, 1000);
         }
         function pausePomodoro() { clearInterval(pomodoroInterval); pomodoroInterval = null; }
