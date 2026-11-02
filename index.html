@@ -66,6 +66,7 @@
             display: flex;
             flex-direction: column;
             gap: 0.4rem;
+            flex: 1;
         }
 
         .nav-btn {
@@ -89,6 +90,30 @@
             color: #090d16;
             box-shadow: 0 4px 20px rgba(56, 189, 248, 0.35);
             transform: translateY(-2px);
+        }
+
+        /* Dev Signature in Bottom Corner of Sidebar */
+        .dev-signature {
+            margin-top: auto;
+            padding-top: 1rem;
+            border-top: 1px solid var(--card-border);
+            text-align: center;
+        }
+
+        .dev-monogram {
+            font-size: 1.1rem;
+            font-weight: 900;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 2px;
+            margin-bottom: 0.2rem;
+        }
+
+        .dev-name {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            font-weight: 500;
         }
 
         /* Mobile Toggle */
@@ -229,6 +254,13 @@
             <button class="nav-btn" onclick="switchTab('utilities', this)"><span>🛠️ 10x Utilities</span></button>
             <button class="nav-btn" onclick="switchTab('tools', this)"><span>📝 Productivity</span></button>
         </div>
+
+        <!-- Dev Signature in Bottom Corner -->
+        <div class="dev-signature">
+            <div class="dev-monogram">SD • EK</div>
+            <div class="dev-name">Scribble.Development</div>
+            <div class="dev-name" style="font-size: 0.7rem; color: var(--accent); margin-top: 2px;">Elijah Kruse</div>
+        </div>
     </sidebar>
 
     <!-- MAIN CONTENT -->
@@ -237,7 +269,6 @@
         <div id="dashboard" class="tab-content active">
             <div class="card">
                 <h2>Welcome to Tengo Utilities! 🚀</h2>
-                <p style="color: var(--text-muted); line-height: 1.6;">Your 10x-upgraded, gorgeous mobile and tablet-ready dashboard. Fully packed with touch-friendly mini-games, advanced tools, converters, and quick shortcuts!</p>
             </div>
             <div class="grid-3">
                 <div class="card" style="text-align: center;">
@@ -309,7 +340,6 @@
         <!-- TAB 4: ARCADE -->
         <div id="arcade" class="tab-content">
             <div class="grid-2">
-                <!-- Snake Game -->
                 <div class="card" style="text-align: center;">
                     <h3>🐍 Mobile Retro Snake</h3>
                     <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.5rem;">Use on-screen buttons or arrow keys</p>
@@ -325,15 +355,13 @@
                     <button class="ctrl-btn" onclick="startSnake()" style="margin-top: 1rem; width:100%;">Start / Restart Snake</button>
                 </div>
 
-                <!-- Clicker Game -->
                 <div class="card" style="text-align: center;">
                     <h3>🪙 Energy Clicker Game</h3>
                     <p style="font-size: 0.8rem; color: var(--text-muted);">Tap the coin as fast as you can!</p>
                     <div id="clicker-score" style="font-size: 3.5rem; font-weight: 900; color: var(--accent); margin: 1.2rem 0;">0</div>
-                    <button onclick="incrementClicker()" style="background:var(--accent-gradient); border:none; border-radius:50%; width:110px; height:110px; font-size:3rem; cursor:pointer; box-shadow:0 0 25px rgba(56,189,248,0.5); active:scale(0.9);">⚡</button>
+                    <button onclick="incrementClicker()" style="background:var(--accent-gradient); border:none; border-radius:50%; width:110px; height:110px; font-size:3rem; cursor:pointer; box-shadow:0 0 25px rgba(56,189,248,0.5);">⚡</button>
                 </div>
 
-                <!-- Tic-Tac-Toe -->
                 <div class="card" style="text-align: center; grid-column: 1 / -1;">
                     <h3>❌ Tic-Tac-Toe (2-Player Touch)</h3>
                     <div id="ttt-board" style="display: grid; grid-template-columns: repeat(3, 75px); gap: 8px; justify-content: center; margin: 15px 0;">
@@ -452,7 +480,6 @@
             }
         }
 
-        // Live Clock & Weekend Tracker
         setInterval(() => {
             const now = new Date();
             document.getElementById('dash-clock').innerText = now.toLocaleTimeString();
@@ -470,7 +497,6 @@
             }
         }, 1000);
 
-        // Calculator
         let calcDisplay = document.getElementById('calc-display');
         let currentInput = '0';
         function appendCalc(val) {
@@ -484,7 +510,6 @@
             catch (e) { calcDisplay.value = 'Error'; currentInput = '0'; }
         }
 
-        // Study Helper
         function sendAIMessage() {
             const input = document.getElementById('chat-input');
             const messagesContainer = document.getElementById('chat-messages');
@@ -507,7 +532,6 @@
         }
         function handleKeyPress(e) { if (e.key === 'Enter') sendAIMessage(); }
 
-        // Snake Game
         let snakeInterval = null;
         let snakeDx = 10, snakeDy = 0;
         function setSnakeDir(dir) {
@@ -553,14 +577,12 @@
             }, 120);
         }
 
-        // Clicker Game
         let clickerScore = 0;
         function incrementClicker() {
             clickerScore++;
             document.getElementById('clicker-score').innerText = clickerScore;
         }
 
-        // Tic-Tac-Toe
         let tttBoard = ['', '', '', '', '', '', '', '', ''];
         let tttTurn = 'X';
         function makeMove(idx) {
@@ -585,7 +607,6 @@
             for (let i = 0; i < 9; i++) document.getElementById('cell-' + i).innerText = '';
         }
 
-        // Quick Links (Discord removed)
         const defaultLinks = [
             { name: 'Roblox', url: 'https://www.roblox.com' },
             { name: 'Minecraft Classic', url: 'https://classic.minecraft.net' },
@@ -619,7 +640,6 @@
             nameInput.value = ''; urlInput.value = ''; renderLinks();
         }
 
-        // 10x Utilities
         function updateWordCount() {
             const text = document.getElementById('word-count-input').value;
             const words = text.trim() === '' ? 0 : text.trim().split(/\s+/).length;
@@ -660,7 +680,6 @@
             document.getElementById('age-result').innerText = `${years} years, ${months} months, ${days} days old`;
         }
 
-        // To-Do
         let todos = JSON.parse(localStorage.getItem('hub_todos')) || [];
         function renderTodos() {
             const listEl = document.getElementById('todo-list');
@@ -684,12 +703,10 @@
         function toggleTodo(index) { todos[index].completed = !todos[index].completed; renderTodos(); }
         function deleteTodo(index) { todos.splice(index, 1); renderTodos(); }
 
-        // Scratchpad
         const scratchpad = document.getElementById('scratchpad');
         scratchpad.value = localStorage.getItem('hub_notes') || '';
         function saveNotes() { localStorage.setItem('hub_notes', scratchpad.value); }
 
-        // Pomodoro
         let pomodoroTime = 25 * 60; let pomodoroInterval = null;
         function setPomodoroMode(mins) {
             pausePomodoro();
