@@ -282,34 +282,19 @@
             <span>Tengo Utilities Pro</span>
         </div>
         
-        <!-- UI Theme Customizer (10 Presets + 10 Deltarune Themes) -->
+        <!-- Exact Ordered Deltarune Themes Switcher -->
         <div class="theme-selector-box">
-            <label style="font-size: 0.75rem; color: var(--text-muted); display: block; margin-bottom: 0.2rem;">🎨 UI Theme Presets:</label>
+            <label style="font-size: 0.75rem; color: var(--text-muted); display: block; margin-bottom: 0.2rem;">🎮 Deltarune Themes:</label>
             <select id="theme-dropdown" onchange="applyUITheme(this.value)">
-                <optgroup label="UI Custom Presets">
-                    <option value="cyberpunk">1. Cyberpunk Neon (Default)</option>
-                    <option value="matrix">2. Matrix Terminal</option>
-                    <option value="midnight">3. Midnight Obsidian</option>
-                    <option value="vaporwave">4. Sunset Vaporwave</option>
-                    <option value="solar">5. Solar Flare</option>
-                    <option value="ocean">6. Deep Ocean</option>
-                    <option value="bloodline">7. Cyber Bloodline Red</option>
-                    <option value="amethyst">8. Royal Amethyst</option>
-                    <option value="frost">9. Arctic Frost</option>
-                    <option value="gold">10. Cyber Gold</option>
-                </optgroup>
-                <optgroup label="Deltarune World Themes">
-                    <option value="dr_castle">🎮 DR: Castle Town</option>
-                    <option value="dr_cyber">🎮 DR: Cyber City Neon</option>
-                    <option value="dr_sanctuary">🎮 DR: Dark Sanctuary</option>
-                    <option value="dr_queen">🎮 DR: Queen's Mansion</option>
-                    <option value="dr_card">🎮 DR: Card Kingdom</option>
-                    <option value="dr_tv">🎮 DR: TV World</option>
-                    <option value="dr_darker">🎮 DR: Darker Yet Darker</option>
-                    <option value="dr_light">🎮 DR: Hometown Light World</option>
-                    <option value="dr_noelle">🎮 DR: Noelle's Ice Room</option>
-                    <option value="dr_knight">🎮 DR: The Roaring Knight</option>
-                </optgroup>
+                <option value="dr_castle">1. Castle Town</option>
+                <option value="dr_queen">2. Queen's Mansion</option>
+                <option value="dr_sanctuary">3. Dark Sanctuary</option>
+                <option value="dr_flowery">4. Flowery (World)</option>
+                <option value="dr_cyber">5. Cyber City</option>
+                <option value="dr_tv">6. TV World</option>
+                <option value="dr_light">7. Hometown (Light World)</option>
+                <option value="dr_noelle">8. Noelle's Room</option>
+                <option value="dr_card">9. Card Kingdom</option>
             </select>
         </div>
 
@@ -356,7 +341,7 @@
             <script>document.currentScript.outerHTML = renderUniversalHeader();</script>
             <div class="card">
                 <h2>Welcome to Tengo Utilities Pro! 🚀</h2>
-                <p style="color: var(--text-muted); line-height: 1.6;">10x more features with 10 custom UI presets & 10 Deltarune themes built by Scribble.Development.</p>
+                <p style="color: var(--text-muted); line-height: 1.6;">10x more features with ordered Deltarune world themes built by Scribble.Development.</p>
             </div>
             <div class="grid-3">
                 <div class="card" style="text-align: center;">
@@ -576,33 +561,19 @@
             });
         }
 
-        // 10 UI Presets & 10 Deltarune Themes Switcher Engine
+        // Exact Ordered Deltarune Themes Engine
         function applyUITheme(themeKey) {
             const root = document.documentElement;
             const themes = {
-                // Standard Custom Presets
-                cyberpunk: { bg: "radial-gradient(circle at top left, #1e1b4b 0%, #090d16 50%, #020617 100%)", sidebar: "rgba(15, 23, 42, 0.95)", card: "rgba(30, 41, 59, 0.7)", border: "rgba(56, 189, 248, 0.3)", accentGrad: "linear-gradient(135deg, #38bdf8 0%, #818cf8 50%, #c084fc 100%)", accent: "#38bdf8" },
-                matrix: { bg: "radial-gradient(circle at top left, #022c22 0%, #020f0c 50%, #000000 100%)", sidebar: "rgba(2, 44, 34, 0.95)", card: "rgba(6, 78, 59, 0.4)", border: "rgba(52, 211, 153, 0.3)", accentGrad: "linear-gradient(135deg, #34d399 0%, #10b981 50%, #059669 100%)", accent: "#34d399" },
-                midnight: { bg: "radial-gradient(circle at top left, #18181b 0%, #09090b 50%, #000000 100%)", sidebar: "rgba(9, 9, 11, 0.95)", card: "rgba(24, 24, 27, 0.6)", border: "rgba(113, 113, 122, 0.3)", accentGrad: "linear-gradient(135deg, #f4f4f5 0%, #a1a1aa 50%, #52525b 100%)", accent: "#f4f4f5" },
-                vaporwave: { bg: "radial-gradient(circle at top left, #4c1d95 0%, #2e1065 50%, #0f0728 100%)", sidebar: "rgba(46, 16, 101, 0.95)", card: "rgba(88, 28, 135, 0.4)", border: "rgba(244, 114, 182, 0.3)", accentGrad: "linear-gradient(135deg, #f472b6 0%, #fb7185 50%, #facc15 100%)", accent: "#f472b6" },
-                solar: { bg: "radial-gradient(circle at top left, #451a03 0%, #1c0f02 50%, #0a0501 100%)", sidebar: "rgba(28, 15, 2, 0.95)", card: "rgba(69, 26, 3, 0.5)", border: "rgba(251, 146, 60, 0.3)", accentGrad: "linear-gradient(135deg, #fb923c 0%, #f97316 50%, #ea580c 100%)", accent: "#fb923c" },
-                ocean: { bg: "radial-gradient(circle at top left, #082f49 0%, #031525 50%, #01080f 100%)", sidebar: "rgba(3, 21, 37, 0.95)", card: "rgba(8, 47, 73, 0.5)", border: "rgba(56, 189, 248, 0.3)", accentGrad: "linear-gradient(135deg, #38bdf8 0%, #0ea5e9 50%, #0284c7 100%)", accent: "#38bdf8" },
-                bloodline: { bg: "radial-gradient(circle at top left, #450a0a 0%, #180505 50%, #080202 100%)", sidebar: "rgba(24, 5, 5, 0.95)", card: "rgba(69, 10, 10, 0.4)", border: "rgba(248, 113, 113, 0.3)", accentGrad: "linear-gradient(135deg, #f87171 0%, #ef4444 50%, #dc2626 100%)", accent: "#f87171" },
-                amethyst: { bg: "radial-gradient(circle at top left, #3b0764 0%, #170327 50%, #09010f 100%)", sidebar: "rgba(23, 3, 39, 0.95)", card: "rgba(59, 7, 100, 0.4)", border: "rgba(216, 180, 254, 0.3)", accentGrad: "linear-gradient(135deg, #d8b4fe 0%, #c084fc 100%)", accent: "#d8b4fe" },
-                frost: { bg: "radial-gradient(circle at top left, #0f172a 0%, #0b1120 50%, #020617 100%)", sidebar: "rgba(15, 23, 42, 0.95)", card: "rgba(30, 41, 59, 0.5)", border: "rgba(148, 163, 184, 0.3)", accentGrad: "linear-gradient(135deg, #e2e8f0 0%, #94a3b8 50%, #64748b 100%)", accent: "#e2e8f0" },
-                gold: { bg: "radial-gradient(circle at top left, #292524 0%, #1c1917 50%, #0c0a09 100%)", sidebar: "rgba(28, 25, 23, 0.95)", card: "rgba(41, 37, 36, 0.6)", border: "rgba(250, 204, 21, 0.3)", accentGrad: "linear-gradient(135deg, #facc15 0%, #eab308 50%, #ca8a04 100%)", accent: "#facc15" },
-                
-                // Deltarune Themed Presets
-                dr_castle: { bg: "radial-gradient(circle at top left, #064e3b 0%, #022c22 50%, #011c16 100%)", sidebar: "rgba(2, 44, 34, 0.95)", card: "rgba(6, 78, 59, 0.5)", border: "rgba(52, 211, 153, 0.4)", accentGrad: "linear-gradient(135deg, #6ee7b7 0%, #34d399 50%, #059669 100%)", accent: "#34d399" },
-                dr_cyber: { bg: "radial-gradient(circle at top left, #831843 0%, #500724 50%, #1f010c 100%)", sidebar: "rgba(80, 7, 36, 0.95)", card: "rgba(131, 24, 67, 0.4)", border: "rgba(244, 114, 182, 0.4)", accentGrad: "linear-gradient(135deg, #f472b6 0%, #ec4899 50%, #be185d 100%)", accent: "#f472b6" },
-                dr_sanctuary: { bg: "radial-gradient(circle at top left, #311042 0%, #170521 50%, #08010d 100%)", sidebar: "rgba(23, 5, 33, 0.95)", card: "rgba(49, 16, 66, 0.5)", border: "rgba(192, 132, 252, 0.4)", accentGrad: "linear-gradient(135deg, #e879f9 0%, #c084fc 100%)", accent: "#e879f9" },
-                dr_queen: { bg: "radial-gradient(circle at top left, #7c2d12 0%, #431407 50%, #1c0702 100%)", sidebar: "rgba(67, 20, 7, 0.95)", card: "rgba(124, 45, 18, 0.5)", border: "rgba(251, 191, 36, 0.4)", accentGrad: "linear-gradient(135deg, #fde047 0%, #facc15 50%, #eab308 100%)", accent: "#fde047" },
-                dr_card: { bg: "radial-gradient(circle at top left, #172554 0%, #0f172a 50%, #020617 100%)", sidebar: "rgba(15, 23, 42, 0.95)", card: "rgba(23, 37, 84, 0.5)", border: "rgba(96, 165, 250, 0.4)", accentGrad: "linear-gradient(135deg, #93c5fd 0%, #60a5fa 50%, #3b82f6 100%)", accent: "#93c5fd" },
-                dr_tv: { bg: "radial-gradient(circle at top left, #4a044e 0%, #2e0231 50%, #0f0112 100%)", sidebar: "rgba(46, 2, 49, 0.95)", card: "rgba(74, 4, 78, 0.5)", border: "rgba(244, 63, 94, 0.4)", accentGrad: "linear-gradient(135deg, #fb7185 0%, #f43f5e 100%)", accent: "#fb7185" },
-                dr_darker: { bg: "radial-gradient(circle at top left, #09090b 0%, #030304 50%, #000000 100%)", sidebar: "rgba(3, 3, 4, 0.98)", card: "rgba(24, 24, 27, 0.8)", border: "rgba(82, 82, 91, 0.5)", accentGrad: "linear-gradient(135deg, #a1a1aa 0%, #52525b 50%, #27272a 100%)", accent: "#a1a1aa" },
-                dr_light: { bg: "radial-gradient(circle at top left, #0284c7 0%, #0369a1 50%, #075985 100%)", sidebar: "rgba(3, 105, 161, 0.95)", card: "rgba(2, 132, 199, 0.4)", border: "rgba(186, 230, 253, 0.4)", accentGrad: "linear-gradient(135deg, #bae6fd 0%, #7dd3fc 100%)", accent: "#bae6fd" },
-                dr_noelle: { bg: "radial-gradient(circle at top left, #1e3a8a 0%, #172554 50%, #090d16 100%)", sidebar: "rgba(23, 37, 84, 0.95)", card: "rgba(30, 58, 138, 0.5)", border: "rgba(147, 197, 253, 0.4)", accentGrad: "linear-gradient(135deg, #60a5fa 0%, #93c5fd 50%, #eff6ff 100%)", accent: "#93c5fd" },
-                dr_knight: { bg: "radial-gradient(circle at top left, #27272a 0%, #09090b 50%, #020617 100%)", sidebar: "rgba(9, 9, 11, 0.98)", card: "rgba(39, 39, 42, 0.6)", border: "rgba(239, 68, 68, 0.4)", accentGrad: "linear-gradient(135deg, #f87171 0%, #ef4444 50%, #b91c1c 100%)", accent: "#f87171" }
+                dr_castle:   { bg: "radial-gradient(circle at top left, #064e3b 0%, #022c22 50%, #011c16 100%)", sidebar: "rgba(2, 44, 34, 0.95)", card: "rgba(6, 78, 59, 0.5)", border: "rgba(52, 211, 153, 0.4)", accentGrad: "linear-gradient(135deg, #6ee7b7 0%, #34d399 50%, #059669 100%)", accent: "#34d399" },
+                dr_queen:    { bg: "radial-gradient(circle at top left, #7c2d12 0%, #431407 50%, #1c0702 100%)", sidebar: "rgba(67, 20, 7, 0.95)", card: "rgba(124, 45, 18, 0.5)", border: "rgba(251, 191, 36, 0.4)", accentGrad: "linear-gradient(135deg, #fde047 0%, #facc15 50%, #eab308 100%)", accent: "#fde047" },
+                dr_sanctuary:{ bg: "radial-gradient(circle at top left, #311042 0%, #170521 50%, #08010d 100%)", sidebar: "rgba(23, 5, 33, 0.95)", card: "rgba(49, 16, 66, 0.5)", border: "rgba(192, 132, 252, 0.4)", accentGrad: "linear-gradient(135deg, #e879f9 0%, #c084fc 100%)", accent: "#e879f9" },
+                dr_flowery:  { bg: "radial-gradient(circle at top left, #581c87 0%, #3b0764 50%, #170327 100%)", sidebar: "rgba(59, 7, 100, 0.95)", card: "rgba(88, 28, 135, 0.5)", border: "rgba(216, 180, 254, 0.4)", accentGrad: "linear-gradient(135deg, #e879f9 0%, #c084fc 50%, #a855f7 100%)", accent: "#e879f9" },
+                dr_cyber:    { bg: "radial-gradient(circle at top left, #831843 0%, #500724 50%, #1f010c 100%)", sidebar: "rgba(80, 7, 36, 0.95)", card: "rgba(131, 24, 67, 0.4)", border: "rgba(244, 114, 182, 0.4)", accentGrad: "linear-gradient(135deg, #f472b6 0%, #ec4899 50%, #be185d 100%)", accent: "#f472b6" },
+                dr_tv:       { bg: "radial-gradient(circle at top left, #4a044e 0%, #2e0231 50%, #0f0112 100%)", sidebar: "rgba(46, 2, 49, 0.95)", card: "rgba(74, 4, 78, 0.5)", border: "rgba(244, 63, 94, 0.4)", accentGrad: "linear-gradient(135deg, #fb7185 0%, #f43f5e 100%)", accent: "#fb7185" },
+                dr_light:    { bg: "radial-gradient(circle at top left, #0284c7 0%, #0369a1 50%, #075985 100%)", sidebar: "rgba(3, 105, 161, 0.95)", card: "rgba(2, 132, 199, 0.4)", border: "rgba(186, 230, 253, 0.4)", accentGrad: "linear-gradient(135deg, #bae6fd 0%, #7dd3fc 100%)", accent: "#bae6fd" },
+                dr_noelle:   { bg: "radial-gradient(circle at top left, #1e3a8a 0%, #172554 50%, #090d16 100%)", sidebar: "rgba(23, 37, 84, 0.95)", card: "rgba(30, 58, 138, 0.5)", border: "rgba(147, 197, 253, 0.4)", accentGrad: "linear-gradient(135deg, #60a5fa 0%, #93c5fd 50%, #eff6ff 100%)", accent: "#93c5fd" },
+                dr_card:     { bg: "radial-gradient(circle at top left, #172554 0%, #0f172a 50%, #020617 100%)", sidebar: "rgba(15, 23, 42, 0.95)", card: "rgba(23, 37, 84, 0.5)", border: "rgba(96, 165, 250, 0.4)", accentGrad: "linear-gradient(135deg, #93c5fd 0%, #60a5fa 50%, #3b82f6 100%)", accent: "#93c5fd" }
             };
 
             const t = themes[themeKey];
@@ -634,7 +605,7 @@
             }
         }, 1000);
 
-        // Fully Fixed Calculator (Sin, Cos, Tan, Sqrt, Division)
+        // Fully Fixed Calculator
         let calcDisplay = document.getElementById('calc-display');
         let currentInput = '0';
         
