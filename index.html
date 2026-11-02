@@ -92,28 +92,47 @@
             transform: translateY(-2px);
         }
 
-        /* Dev Signature in Bottom Corner of Sidebar */
+        /* Design 2 Dev Signature in Bottom Corner */
         .dev-signature {
             margin-top: auto;
             padding-top: 1rem;
             border-top: 1px solid var(--card-border);
-            text-align: center;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
         }
 
-        .dev-monogram {
+        .dev-monogram-box {
+            width: 42px;
+            height: 42px;
+            background: rgba(5, 8, 15, 0.8);
+            border: 1px solid var(--card-border);
+            border-radius: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             font-size: 1.1rem;
             font-weight: 900;
             background: var(--accent-gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            letter-spacing: 2px;
-            margin-bottom: 0.2rem;
+            letter-spacing: 1px;
+        }
+
+        .dev-info {
+            display: flex;
+            flex-direction: column;
         }
 
         .dev-name {
-            font-size: 0.75rem;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .dev-sub {
+            font-size: 0.7rem;
             color: var(--text-muted);
-            font-weight: 500;
         }
 
         /* Mobile Toggle */
@@ -255,11 +274,13 @@
             <button class="nav-btn" onclick="switchTab('tools', this)"><span>📝 Productivity</span></button>
         </div>
 
-        <!-- Dev Signature in Bottom Corner -->
+        <!-- Design 2 Signature in Bottom Corner -->
         <div class="dev-signature">
-            <div class="dev-monogram">SD • EK</div>
-            <div class="dev-name">Scribble.Development</div>
-            <div class="dev-name" style="font-size: 0.7rem; color: var(--accent); margin-top: 2px;">Elijah Kruse</div>
+            <div class="dev-monogram-box">SD</div>
+            <div class="dev-info">
+                <div class="dev-name">Elijah Kruse</div>
+                <div class="dev-sub">Scribble.Development</div>
+            </div>
         </div>
     </sidebar>
 
